@@ -1,12 +1,16 @@
 import 'package:get/get.dart';
+import 'package:situ_talk/features/onboarding/screen/onboarding_screen.dart';
 import 'package:situ_talk/features/splash_screen/screen/splash_screen.dart';
 
 class AppRoutes {
   static String splashScreen = "/splashScreen";
+  static String onboardingScreen = "/onboardingScreen";
 
   static String getSplashScreen() => splashScreen;
+  static String getOnboardingScreen() => onboardingScreen;
 
   static List<GetPage> routes = [
     GetPage(name: splashScreen, page: () => const SplashScreen()),
+    GetPage(name: onboardingScreen, page: () => OnboardingScreen()),
   ];
 }

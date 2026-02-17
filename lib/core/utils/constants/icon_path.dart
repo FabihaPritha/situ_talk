@@ -1,5 +1,6 @@
 class IconPath {
   IconPath._();
+  static const String appIcon = 'assets/icons/app_icon.png';
   static const String googleLogo = 'assets/icons/google.png';
   static const String appleLogo = 'assets/icons/apple.png';
   static const String graph = 'assets/icons/graph.svg';

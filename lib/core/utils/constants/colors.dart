@@ -5,7 +5,7 @@ class AppColors {
 
   // Brand Colors
   static const Color primary = Color(
-    0xFFECC879,
+    0xFF337AB7,
   ); // Darker primary for a more professional look
   static const Color secondary = Color(
     0xFFFEC601,
@@ -33,8 +33,11 @@ class AppColors {
   static const Color textPrimary = Color(
     0xFF212121,
   ); // Darker shade for better readability
-  static const Color textSecondary = Color(
-    0xFFDFE3E8,
+  static const Color textSecondary = Color.fromARGB(
+    255,
+    138,
+    138,
+    138,
   ); // Neutral grey for secondary text
   static const Color textWhite = Colors.white;
 
