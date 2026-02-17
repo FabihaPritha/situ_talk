@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:situ_talk/core/utils/constants/image_path.dart';
 import 'package:situ_talk/features/onboarding/model/onboarding_model.dart';
+import 'package:situ_talk/routes.dart/app_routes.dart';
 
 class OnboardingController extends GetxController {
   final pageController = PageController();
@@ -28,7 +29,7 @@ class OnboardingController extends GetxController {
   void nextPage() {
     if (isLastPage) {
       // Navigate to Home or Login
-      Get.offNamed('/home');
+      Get.offAllNamed(AppRoutes.getMainNavScreen());
     } else {
       pageController.nextPage(duration: 300.milliseconds, curve: Curves.ease);
     }
