@@ -11,6 +11,6 @@ class SplashController extends GetxController {
   Future<void> _navigateToNextScreen() async {
     await Future.delayed(const Duration(seconds: 3));
     // Add navigation logic here, e.g., Get.offNamed(Routes.HOME);
-    Get.offAllNamed(AppRoutes.getOnboardingScreen());
+    Get.offAllNamed(AppRoutes.getAuthScreen());
   }
 }

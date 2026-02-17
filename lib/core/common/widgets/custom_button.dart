@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:situ_talk/core/common/styles/global_text_style.dart';
 import 'package:situ_talk/core/utils/constants/colors.dart';
 
-
 class CustomButton extends StatelessWidget {
   final String? text;
   final Color? backgroundColor;
@@ -83,7 +82,7 @@ class CustomButton extends StatelessWidget {
                 Text(
                   text!,
                   style: getTextStyle(
-                    color: textColor ?? Colors.black, // Default text color
+                    color: textColor ?? Colors.white, // Default text color
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                     // lineHeight: 11.sp,
