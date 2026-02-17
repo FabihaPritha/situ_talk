@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:situ_talk/core/utils/theme/app_system_theme.dart';
+import 'package:situ_talk/routes.dart/app_routes.dart';
 import 'core/bindings/controller_binder.dart';
 import 'core/utils/theme/theme.dart';
 
@@ -20,8 +21,8 @@ class SituTalk extends StatelessWidget {
       builder: (_, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          // initialRoute: AppRoute.getAuthWrapper(),
-          // getPages: AppRoute.routes,
+          initialRoute: AppRoutes.getSplashScreen(),
+          getPages: AppRoutes.routes,
           initialBinding: ControllerBinder(),
           themeMode: ThemeMode.light,
           theme: AppTheme.lightTheme,
