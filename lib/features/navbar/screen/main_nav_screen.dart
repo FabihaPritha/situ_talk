@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:situ_talk/core/common/styles/global_text_style.dart';
 import 'package:situ_talk/core/utils/constants/colors.dart';
 import 'package:situ_talk/features/home/screen/home_screen.dart';
+import 'package:situ_talk/features/progress/screen/progress_screen.dart';
 import '../controller/nav_controller.dart';
 
 class MainNavScreen extends StatelessWidget {
@@ -11,8 +12,8 @@ class MainNavScreen extends StatelessWidget {
 
   final List<Widget> screens = [
     Center(child: HomeScreen()),
-    const Center(child: Text("Practice")),
-    const Center(child: Text("Progress")),
+    Center(child: Text("Profile")),
+    Center(child: ProgressScreen()),
     const Center(child: Text("Profile")),
   ];
 
