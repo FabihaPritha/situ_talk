@@ -1,25 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:situ_talk/core/common/styles/global_text_style.dart';
 import 'package:situ_talk/core/utils/constants/colors.dart';
+import 'package:situ_talk/features/home/screen/home_screen.dart';
 import '../controller/nav_controller.dart';
 
 class MainNavScreen extends StatelessWidget {
   final controller = Get.put(NavController());
 
   final List<Widget> screens = [
-    const Center(
-      child: Text("Home", style: TextStyle(color: Colors.white)),
-    ),
-    const Center(
-      child: Text("History", style: TextStyle(color: Colors.white)),
-    ),
-    const Center(
-      child: Text("Profile", style: TextStyle(color: Colors.white)),
-    ),
-    const Center(
-      child: Text("Settings", style: TextStyle(color: Colors.white)),
-    ),
+    Center(child: HomeScreen()),
+    const Center(child: Text("Practice")),
+    const Center(child: Text("Progress")),
+    const Center(child: Text("Profile")),
   ];
 
   MainNavScreen({super.key});
@@ -27,9 +21,8 @@ class MainNavScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(
-        0xFF001F3F,
-      ), // Dark background to show the glass effect
+      // Keep your app background as needed
+      backgroundColor: const Color(0xFFF5F7F9),
       body: Stack(
         children: [
           PageView(
@@ -39,32 +32,40 @@ class MainNavScreen extends StatelessWidget {
             children: screens,
           ),
 
-          // The Floating Bar
+          // The Floating White Elevated Bar
           Positioned(
             bottom: 30.h,
-            left: 15.w,
-            right: 15.w,
-            child: _buildGooeyNavBar(),
+            left: 20.w,
+            right: 20.w,
+            child: _buildElevatedNavBar(),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildGooeyNavBar() {
+  Widget _buildElevatedNavBar() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.1), // Translucent border/bg
+        color: Colors.white, // Solid white background
         borderRadius: BorderRadius.circular(20.r),
-        border: Border.all(color: Colors.white.withOpacity(0.1)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 20,
+            spreadRadius: 1,
+            offset: const Offset(0, 10), // Elevation effect
+          ),
+        ],
       ),
       child: Obx(
         () => Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _navItem(0, Icons.home_filled, "Home"),
-            _navItem(1, Icons.translate_rounded, "Practice"),
+            _navItem(1, Icons.playlist_play_rounded, "Practice"),
+            // _navItem(1, Icons.spatial_audio_rounded, "Practice"),
             _navItem(2, Icons.bar_chart_rounded, "Progress"),
             _navItem(3, Icons.account_circle_outlined, "Profile"),
           ],
@@ -78,34 +79,40 @@ class MainNavScreen extends StatelessWidget {
 
     return GestureDetector(
       onTap: () => controller.changePage(index),
+      behavior: HitTestBehavior.opaque,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
         padding: EdgeInsets.symmetric(
-          horizontal: isSelected ? 20.w : 15.w,
-          vertical: 12.h,
+          horizontal: isSelected ? 16.w : 12.w,
+          vertical: 10.h,
         ),
         decoration: BoxDecoration(
-          // Only the selected item gets the white solid background
-          color: isSelected ? Colors.white : Colors.transparent,
+          // In the image, the selected item has a light blue or subtle grey tint
+          // to distinguish it from the white bar, or stays white if preferred.
+          color: isSelected
+              ? AppColors.primary.withOpacity(0.1)
+              : Colors.transparent,
           borderRadius: BorderRadius.circular(15.r),
         ),
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Icon(
               icon,
-              color: isSelected ? AppColors.primary : Colors.white,
+              color: isSelected
+                  ? AppColors.primary
+                  : AppColors.cardBackgroundColor,
               size: 24.sp,
             ),
-            // The label only renders and animates in if selected
             if (isSelected) ...[
               SizedBox(width: 8.w),
               Text(
                 label,
-                style: TextStyle(
+                style: getTextStyle(
                   color: AppColors.primary,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15.sp,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14.sp,
                 ),
               ),
             ],

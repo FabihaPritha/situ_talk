@@ -21,7 +21,7 @@ class SituTalk extends StatelessWidget {
       builder: (_, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: AppRoutes.getSplashScreen(),
+          initialRoute: AppRoutes.getMainNavScreen(),
           getPages: AppRoutes.routes,
           initialBinding: ControllerBinder(),
           themeMode: ThemeMode.light,
